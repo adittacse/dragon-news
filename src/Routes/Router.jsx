@@ -13,8 +13,12 @@ const Router = createBrowserRouter([
                 element: <Home />
             },
             {
-                index: "category/:id",
-                element: <CategoryNews />
+                path: "category/:id",
+                element: <CategoryNews></CategoryNews>
+            },
+            {
+                path: "*",
+                element: <p>404 not found</p>
             }
         ]
     },
@@ -25,10 +29,6 @@ const Router = createBrowserRouter([
     {
         path: "news",
         element: <p>News Layout</p>,
-    },
-    {
-        path: "*",
-        element: <p>404 not found</p>
     }
 ]);
 

@@ -17,3 +17,11 @@
 * {
     font-family: "Poppins", sans-serif;
 }
+
+a.active {
+    @apply bg-base-300;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    font-weight: 600;
+    color: #403F3F;
+}
