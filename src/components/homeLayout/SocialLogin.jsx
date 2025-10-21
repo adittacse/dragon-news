@@ -4,7 +4,7 @@ const SocialLogin = () => {
     return (
         <div>
             <h3 className="text-[20px] font-semibold mb-5">Login With</h3>
-            <div className="">
+            <div className="p-3">
                 {/* Google */}
                 <button className="btn bg-white text-black border-[#e5e5e5] w-full mb-3">
                     <svg aria-label="Google logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
