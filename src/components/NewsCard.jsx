@@ -1,5 +1,6 @@
 import { FiBookmark, FiShare2, FiEye } from "react-icons/fi";
 import { FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa";
+import { Link } from "react-router";
 
 const NewsCard = ({ news }) => {
     const { id, author, title, thumbnail_url, details, rating, total_view } = news;
@@ -50,16 +51,16 @@ const NewsCard = ({ news }) => {
 
             {/* excerpt */}
             <div className="px-4 py-4">
-                <p className="text-sm sm:text-base text-base-content/80">
+                <p className="text-sm sm:text-base text-accent">
                     {
                         details.length > 200 ? <>
                             {details.slice(0, 200)}...
                         </> : details
                     }
                 </p>
-                <button className="link link-hover text-primary font-medium mt-2">
+                <Link to={`/news-details/${id}`} className="link link-hover text-primary font-medium mt-2">
                 Read More
-                </button>
+                </Link>
             </div>
 
             {/* divider */}
