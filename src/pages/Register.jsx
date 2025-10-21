@@ -5,7 +5,7 @@ import AuthContext from '../provider/AuthContext';
 const Register = () => {
     const [success, setSuccess] = useState("");
     const [error, setError] = useState("");
-    const { createUser, setUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile, setUser } = useContext(AuthContext);
     
     const handleRegister = (e) => {
         e.preventDefault();
@@ -20,11 +20,20 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 setUser(result.user);
-                setSuccess("User Registered Successfully");
+                updateUserProfile(result.user, {
+                    displayName: name,
+                    photoURL: photo
+                })
+                .then(() => {
+                    setSuccess("User Registered Successfully");
+                })
+                .catch(error => {
+                    setError(error.message);
+                });
             })
             .catch(error => {
                 setError(error.message);
-            })
+            });
     }
 
     return (
@@ -42,7 +51,7 @@ const Register = () => {
                             <input name="email" type="email" className="input" placeholder="Enter your email address" required />
                             <label className="label">Password</label>
                             <input name="password" type="password" className="input" placeholder="Enter your password" required />
-                            <button type="submit" className="btn btn-neutral mt-4">Login</button>
+                            <button type="submit" className="btn btn-neutral mt-4">Register</button>
                         </fieldset>
                     </form>
                     <p className="text-center font-semibold text-accent mt-2.5">Already Have An Account? Please <Link to="/auth/login" className="text-secondary">Login</Link></p>
