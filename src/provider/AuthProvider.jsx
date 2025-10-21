@@ -12,9 +12,9 @@ const AuthProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
-    const updateUserProfile = (user, profile) => {
+    const updateUserProfile = (profile) => {
         setLoading(true);
-        return updateProfile(user, profile);
+        return updateProfile(auth.currentUser, profile);
     }
 
     const userSignIn = (email, password) => {
@@ -48,9 +48,9 @@ const AuthProvider = ({ children }) => {
         userSignOut,
     }
 
-    return <AuthContext value={authData}>
+    return <AuthContext.Provider value={authData}>
         {children}
-    </AuthContext>
+    </AuthContext.Provider>
 };
 
 export default AuthProvider;
